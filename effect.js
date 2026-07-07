@@ -15,20 +15,17 @@ $('document').ready(function(){
 
 		function showMessage(index) {
 			if (index < 0 || index >= $messages.length) return;
-			messageTimer && clearInterval(messageTimer);
-			$messages.stop(true, true).fadeOut('fast');
-			$messages.eq(index).fadeIn('fast');
+			$messages.stop(true, true).removeClass('active').css('opacity', 0);
+			$messages.eq(index).addClass('active').fadeTo('fast', 1);
 			currentMessage = index;
 			updateNavButtons();
 		}
 
 		function startMessageTimer() {
-			messageTimer && clearInterval(messageTimer);
+			if (messageTimer) return;
 			messageTimer = setInterval(function() {
 				if (currentMessage < $messages.length - 1) {
 					showMessage(currentMessage + 1);
-				} else {
-					clearInterval(messageTimer);
 				}
 			}, 3000);
 		}

@@ -1334,6 +1334,8 @@ audio {
 	margin-top: 200px;
 	display: none;
 	padding: 0 8px 120px;
+	position: relative;
+	min-height: 220px;
 }
 .message p {
 	font-family: 'Signika', sans-serif;
@@ -1341,9 +1343,18 @@ audio {
 	text-transform: uppercase;
 	color: #C4515C;
 	text-shadow: 2px 2px 2px #FFF;
-	display: none;
+	display: block;
 	font-weight: bold;
 	line-height: 1.45;
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	opacity: 0;
+	transition: opacity 0.4s ease;
+}
+.message p.active {
+	opacity: 1;
 }
 
 .navbar.navbar-fixed-bottom {
